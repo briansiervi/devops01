@@ -20,12 +20,12 @@
     docker run --rm -p 3000:3000 -d api-rocket:v1
     docker run -p 3000:3000 --name novo-container -d api-rocket:v1
     ```
-    - Parâmetros
+    Parâmetros
       - "--rm" remove a imagem após a finalização da execução
       - "-d" detached, libera o terminal
       - "--name" atribui um nome
-    - Observação
-      - Parâmetros com traço duplo têm que vir antes do traço simples para terem efeito
+
+    Observação: parâmetros com traço duplo têm que vir antes do traço simples para terem efeito.
   - Listar containers
     ```bash
     docker ps
@@ -44,12 +44,12 @@
     docker container inspect novo-container
     ```
 ### Rede
-  - Conceito: uma rede pode ter vários containers
+Conceito: uma rede pode ter vários containers.
   - Listar redes
     ```bash
     docker network ls
     ```
-    - Observação: o default de um container é a rede "bridge"
+    Observação: o default de um container é a rede "bridge"
   - Criar rede
     ```bash
     docker network create primeira-rede
@@ -59,7 +59,7 @@
     ```bash
       docker network connect primeira-rede novo-container
     ```
-    - Observações
+    Observações:
       - O primeiro e o segundo parâmetros podem ser o "NETWORK ID" e o "CONTAINER ID" respectivamente, ou então os seus respectivos nomes. Para verificá-los, é só executar os comandos abaixo:
 
         ```bash
@@ -76,4 +76,21 @@
     ```bash
       docker run --rm --network=primeira-rede --name novo-container -p 3000:3000 -d api-rocket:v1
     ```
-    - Observação: diferentemente de quando o container é criado e somente depois uma rede é associada, neste caso, como o container foi criado com uma rede especificada, ele só terá essa rede.
+    Observação: diferentemente de quando o container é criado e somente depois uma rede é associada, neste caso, como o container foi criado com uma rede especificada, ele só terá essa rede.
+
+### Arquivos
+  - Executar o bash dentro do container (WORKDIR)
+    ```bash
+      docker exec -it novo-container bash
+    ```
+  - Criar arquivo
+    ```bash
+      touch src/file.log
+    ```
+  - Sair do bash
+    ```bash
+      exit
+    ```
+
+### Volume
+Conceito: por padrão um container é efêmero. Mas quando há uma necessidade especial de se guardar algo dentro do container, surge a utilização dos volumes.
