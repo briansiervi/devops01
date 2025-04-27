@@ -113,3 +113,4 @@ Conceito: por padrão um container é efêmero. Mas quando há uma necessidade e
         ```bash
         docker container inspect novo-container
         ```
+      - Se a gente rodar o comando de "docker run" sem passar o volume, numa segunda execução, esse volume não aparecerá dentro do container, mas ele continuará a existir.
