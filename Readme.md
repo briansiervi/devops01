@@ -57,40 +57,59 @@ Conceito: uma rede pode ter vários containers.
     ```
   - Associar uma rede a um container existente
     ```bash
-      docker network connect primeira-rede novo-container
+    docker network connect primeira-rede novo-container
     ```
     Observações:
       - O primeiro e o segundo parâmetros podem ser o "NETWORK ID" e o "CONTAINER ID" respectivamente, ou então os seus respectivos nomes. Para verificá-los, é só executar os comandos abaixo:
 
         ```bash
-          docker network ls
-          docker ps
+        docker network ls
+        docker ps
         ```
       - Quando um container é criado sem especificar uma rede, a bridge é criada juntamente com ele. Então ao associar uma nova rede, o container terá 2 redes associadas.
 
   - Verificar se uma rede está associada a um container
     ```bash
-      docker network inspect primeira-rede
+    docker network inspect primeira-rede
     ```
   - Criar container com a rede associada
     ```bash
-      docker run --rm --network=primeira-rede --name novo-container -p 3000:3000 -d api-rocket:v1
+    docker run --rm --network=primeira-rede --name novo-container -p 3000:3000 -d api-rocket:v1
     ```
     Observação: diferentemente de quando o container é criado e somente depois uma rede é associada, neste caso, como o container foi criado com uma rede especificada, ele só terá essa rede.
 
-### Arquivos
+### Arquivo
   - Executar o bash dentro do container (WORKDIR)
     ```bash
-      docker exec -it novo-container bash
+    docker exec -it novo-container bash
     ```
   - Criar arquivo
     ```bash
-      touch src/file.log
+    touch src/file.log
     ```
   - Sair do bash
     ```bash
-      exit
+    exit
     ```
 
 ### Volume
 Conceito: por padrão um container é efêmero. Mas quando há uma necessidade especial de se guardar algo dentro do container, surge a utilização dos volumes.
+
+  - Criar volume
+    ```bash
+    docker volume create primeiro-volume
+    ```
+  - Inspecionar volume
+    ```bash
+    docker volume inspect primeiro-volume
+    ```
+  - Associar volume a um container existente
+    ```bash
+    docker run --rm --network=primeira-rede --name novo-container -v primeiro-volume:/usr/src/app -p 3000:3000 -d api-rocket:v1
+    ```
+    Observações:
+      - É importante que o volume esteja apontando para o WORKDIR, que neste caso é "/usr/src/app"
+      - Após associado ao container, o comando "inspect" não mostra diferenças. Para ver realmente se o volume está associado ao container, temos que inspecionar o container e verificar se a propriedade "Mounts" está preenchida.
+        ```bash
+        docker container inspect novo-container
+        ```
