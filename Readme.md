@@ -82,6 +82,7 @@ Conceito: uma rede pode ter vários containers.
   - Executar o bash dentro do container (WORKDIR)
     ```bash
     docker exec -it novo-container bash
+    docker exec -it novo-container sh //para imagens alpine
     ```
   - Criar arquivo
     ```bash
