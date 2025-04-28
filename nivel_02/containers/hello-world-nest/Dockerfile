@@ -1,8 +1,11 @@
-FROM node:23-slim
+FROM node:22.15.0-alpine3.21
 
 WORKDIR /usr/src/app
 
-COPY package.json ./
+COPY package.json yarn.lock ./
+# COPY yarnrc.yml ./
+# COPY .yarn ./.yarn
+
 RUN yarn
 
 COPY . .
