@@ -1,6 +1,6 @@
 # Estudos de Devops
 
-## Comandos
+## Docker
 ### Imagem
   - Gerar imagem
     ```bash
@@ -15,7 +15,7 @@
     docker image history api-rocket:v2
     ```
 ### Container
-  - Criar container
+  - Criar e executar container
     ```bash
     docker run --rm -p 3000:3000 -d api-rocket:v2
     docker run -p 3000:3000 --name novo-container -d api-rocket:v2
@@ -43,8 +43,13 @@
     ```bash
     docker container inspect novo-container
     ```
+  - Monitorar containers que estão rodando
+    ```bash
+    watch docker ps
+    watch docker logs novo-container
+    ```
 ### Rede
-Conceito: uma rede pode ter vários containers.
+  Conceito: uma rede pode ter vários containers.
   - Listar redes
     ```bash
     docker network ls
@@ -94,7 +99,7 @@ Conceito: uma rede pode ter vários containers.
     ```
 
 ### Volume
-Conceito: por padrão um container é efêmero. Mas quando há uma necessidade especial de se guardar algo dentro do container, surge a utilização dos volumes.
+  Conceito: por padrão um container é efêmero. Mas quando há uma necessidade especial de se guardar algo dentro do container, surge a utilização dos volumes.
 
   - Criar volume
     ```bash
@@ -115,3 +120,23 @@ Conceito: por padrão um container é efêmero. Mas quando há uma necessidade e
         docker container inspect novo-container
         ```
       - Se a gente rodar o comando de "docker run" sem passar o volume, numa segunda execução, esse volume não aparecerá dentro do container, mas ele continuará a existir.
+
+## Docker compose
+### Container
+  - Construir
+    ```bash
+    docker compose build
+    ```
+  - Executar container
+    ```bash
+    docker compose up -d
+    docker compose up --build -d
+    ```
+  - Parar container
+    ```bash
+    docker compose down
+    ```
+  - Visualizar logs
+    ```bash
+    docker compose logs
+    ```

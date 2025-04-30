@@ -1,0 +1,43 @@
+version: '3.7'
+
+services:
+  mysql:
+    container_name: mysql
+    volumes:
+      - db:/var/lib/mysql
+    image: mysql:8
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=mydb
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+    ports:
+      - "3306:3306"
+    networks:
+      - primeira-rede
+
+  api-rocket:
+    container_name: api-rocket
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+    networks:
+      - primeira-rede
+    # wait_for_it:
+    #   host: mysql
+    #   port: 3306
+    #   timeout: 60s
+    #   retries: 5
+
+networks:
+  primeira-rede:
+    name: primeira-rede
+    external: true
+    driver: bridge
+
+volumes:
+  db:
