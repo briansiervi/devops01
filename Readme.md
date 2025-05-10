@@ -140,3 +140,52 @@
     ```bash
     docker compose logs
     ```
+
+## Terraform
+  - Verifica comandos da cli
+    ```bash
+    terraform
+    ```
+  - Iniciar
+    ```bash
+    terraform init
+    ```
+  - Validar
+    ```bash
+    terraform validate
+    ```
+  - Planificar
+    ```bash
+    terraform plan
+    terraform plan --destroy
+    ```
+  - Applicar
+    ```bash
+    terraform apply
+    terraform apply -auto-approve
+    ```
+  - Destruir
+    ```bash
+    terraform apply --destroy
+    terraform destroy
+    ```
+## Localstack
+  - Inicia
+    ```bash
+    localstack start -d
+    ```
+  - Lista serviços disponíveis
+    ```bash
+    localstack status services    
+    ```
+    - [localhost](https://app.localstack.cloud/dashboard)
+  - TfLocal
+    - Configura [providers localmente](https://docs.localstack.cloud/user-guide/integrations/terraform/#introduction)
+    - Inicia
+      ```bash
+      tflocal init
+      ```
+    - Aplica
+      ```bash
+      tflocal apply
+      ```
