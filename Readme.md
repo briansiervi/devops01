@@ -169,6 +169,26 @@
     terraform apply --destroy
     terraform destroy
     ```
+### Workspace
+  - Criar
+    ```bash
+    terraform workspace new dev
+    terraform workspace new hml
+    terraform workspace new prd
+    ```
+  - Mostrar workspace atual
+    ```bash
+    terraform workspace show
+    ```
+  - Listar
+    ```bash
+    terraform workspace list
+    ```
+  - Selecionar outro workspace (outro estado)
+    ```bash
+    terraform workspace select default
+    ```
+
 ## Localstack
   - Inicia
     ```bash
