@@ -157,7 +157,7 @@
   - Planificar
     ```bash
     terraform plan
-    terraform plan --destroy
+    terraform plan -destroy
     ```
   - Applicar
     ```bash
@@ -166,9 +166,10 @@
     ```
   - Destruir
     ```bash
-    terraform apply --destroy
+    terraform apply -destroy
     terraform destroy
     ```
+
 ### Workspace
   - Criar
     ```bash
@@ -188,6 +189,16 @@
     ```bash
     terraform workspace select default
     ```
+  - Apagar e Reconstruir
+    ```bash
+    terraform workspace select dev
+    terraform apply -destroy
+    terraform apply -auto-approve
+
+    terraform workspace select hml
+    terraform apply -destroy
+    terraform apply -auto-approve
+    ```
 
 ## Localstack
   - Inicia
@@ -196,7 +207,7 @@
     ```
   - Lista serviços disponíveis
     ```bash
-    localstack status services    
+    localstack status services
     ```
     - [localhost](https://app.localstack.cloud/dashboard)
   - TfLocal
