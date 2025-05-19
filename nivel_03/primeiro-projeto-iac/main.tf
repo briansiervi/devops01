@@ -1,9 +1,4 @@
-resource "aws_s3_bucket" "local_s3_bucket" {
-  bucket = "${var.org_name}-my-bucket-iac-${terraform.workspace}"
-
-  tags = {
-    Name    = "Primeiro bucket"
-    Iac     = true
-    Context = "${terraform.workspace}"
-  }
+module "s3" {
+  source         = "./modules/s3"
+  s3_bucket_name = "local-bucket-iac"
 }
