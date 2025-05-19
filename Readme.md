@@ -169,6 +169,10 @@
     terraform apply -destroy
     terraform destroy
     ```
+  - Formatar arquivos
+    ```bash
+    terraform fmt
+    ```
 
 ### Workspace
   - Criar
