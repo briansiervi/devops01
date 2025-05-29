@@ -4,8 +4,8 @@ output "s3_bucket_name" {
   description = "Nome do bucket do S3"
 }
 
-output "cdn_domain" {
-  value       = module.cloudfront.cdn_domain_name
-  sensitive   = false
-  description = "Nome de domínio do CloudFront"
-}
+# output "cdn_domain" {
+#   value       = module.cloudfront.cdn_domain_name
+#   sensitive   = false
+#   description = "Nome de domínio do CloudFront"
+# }
